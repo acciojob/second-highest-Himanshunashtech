@@ -8,22 +8,36 @@
 
 <body>	
 	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+function secondHighest(arr) {
+    const numArr = arr.map(Number);
+    
+    if (numArr.length < 2) return -Infinity;
+    
+    let max = -Infinity;
+    let secondMax = -Infinity;
+    
+    for (let i = 0; i < numArr.length; i++) {
+        if (numArr[i] > max) {
+            secondMax = max;
+            max = numArr[i];
+        } else if (numArr[i] > secondMax && numArr[i] < max) {
+            secondMax = numArr[i];
+        }
+    }
+    
+    return secondMax === -Infinity ? -Infinity : secondMax;
+}
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
-
+function Main() {
+    var n = parseInt(prompt("Enter the number of elements"));
+    var arr = [];
+    for (var i = 0; i < n; i++) {
+        arr[i] = prompt("Enter element " + (i+1));
+    }
+    alert(secondHighest(arr));
+}
+Main();
+</script>
     <script type="text/javascript" src="./script.js">
 </script>
 
